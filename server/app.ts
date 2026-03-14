@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV !== "test") {
 	mongoose
 		.connect("mongodb://localhost:27017/ndmInvoiceDB")
-		.then(() => console.log("MongoDB connected"))
+		.then(() => console.log("MongoDB connected Successfully"));
 		.catch((err) => console.error("MongoDB connection error:", err));
 }
 
