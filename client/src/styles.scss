@@ -1,0 +1,527 @@
+/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+@import "../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+// html,
+// body {
+//     height: 100%;
+// }
+
+// body {
+//     margin: 0;
+//     font-family: "Times New Roman", Times, serif;
+// }
+
+// html {
+//     font-family: "Times New Roman", Times, serif;
+// }
+
+.mat-toolbar.mat-primary {
+    --mat-toolbar-container-background-color: #ffffff !important;
+    --mat-toolbar-container-text-color: #165c13 !important;
+}
+
+.hover\:text-green-600:hover {
+    --tw-text-opacity: 1;
+    color: #165c13 !important;
+}
+
+.navbarClass {
+    align-items: center !important;
+}
+
+.logoNameclass {
+    cursor: pointer;
+    color: #165c13;
+}
+
+img.header-logo {
+    height: 3rem;
+    width: 3rem;
+    margin: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td input,
+td textarea,
+td select {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+}
+
+textarea {
+    resize: horizontal;
+}
+
+td.text-center {
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+td.text-right {
+    text-align: right;
+}
+
+button {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.work-title {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 1.5rem !important;
+}
+
+.header {
+    display: flex;
+}
+
+.contract-name {
+    color: #0a460a;
+    font-size: 54px;
+    margin: 5px 0;
+}
+
+.logo {
+    height: 8rem;
+    width: 8rem;
+}
+
+.contract-first-name {
+    font-size: 8rem;
+    font-family: auto;
+    margin: 0px;
+    color: #165c13;
+}
+
+.contract-last-name {
+    font-size: 3.2rem;
+    font-family: auto;
+    color: #165c13;
+}
+
+.contract-details {
+    margin-top: -3rem !important;
+}
+
+.contact {
+    margin-top: 0rem !important;
+    color: #165c13 !important;
+}
+
+.address {
+    margin-top: -3rem !important;
+    font-size: 30px !important;
+    color: #165c13 !important;
+    line-height: 2rem;
+}
+
+.contract-owner {
+    font-size: 23px !important;
+    color: #165c13 !important;
+}
+
+.contract-owner-span {
+    font-size: 30px !important;
+}
+
+.contract-id-details {
+    font-size: 23px !important;
+    color: #165c13 !important;
+    text-align: center;
+    font-weight: 500 !important;
+}
+
+.divider {
+    border: 2px solid #165c13 !important;
+}
+
+.contract-work-details {
+    font-size: 22px;
+    font-family: auto;
+    padding: 0.5rem;
+    color: #165c13 !important;
+}
+
+.invoice-details-container {
+    padding: 0rem 1.5rem 1.5rem 1.5rem;
+}
+
+.signature-div {
+    border: 1px solid #000;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.signature-contractName {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.signature-auth {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+.bill-no {
+    width: 25px !important;
+    text-align: right !important;
+}
+
+.bill-date {
+    width: 96px !important;
+}
+
+.no-show {
+    display: none !important;
+}
+
+#error {
+    color: red !important;
+}
+
+.tableContainerClass {
+    margin: 2rem !important;
+}
+
+.dt-buttons {
+    display: inline !important;
+    margin: 0rem 1rem !important;
+}
+
+.dt-length {
+    display: inline !important;
+    float: right;
+    margin: 0rem 1rem !important;
+}
+
+.dt-search {
+    display: inline !important;
+    float: right !important;
+    margin: 0rem 1rem !important;
+}
+
+.dt-paging {
+    display: inline !important;
+    float: right !important;
+    top: 2rem;
+    position: relative;
+}
+
+div#myTable_info {
+    display: inline !important;
+    top: 2rem;
+    position: relative;
+}
+
+table.dataTable {
+    width: 100%;
+    border-spacing: 0;
+    margin: 1rem auto !important;
+    top: 1rem !important;
+    position: relative;
+}
+
+.selectionClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.buttonSection {
+    display: flex;
+    align-items: center;
+    margin: 0rem 1rem !important;
+}
+
+#searchInvoices,
+#clearInvoices {
+    margin-right: 1rem !important;
+}
+
+// #headerDetails,
+// #invoiceDetails {
+//     display: none;
+// }
+
+th,
+td {
+    color: #000000;
+}
+
+.myTableHeaderTr th {
+    text-align: center !important;
+}
+
+.invoiceNo {
+    width: 75px !important;
+}
+
+.invoiceNoTd,
+.invoiceDateTd {
+    text-align: center !important;
+}
+
+.invoiceDate {
+    width: 125px !important;
+}
+
+.invoiceTitle {
+    max-width: 350px !important;
+}
+
+.invoiceTitleTd {
+    max-width: 350px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.actionClassTd {
+    max-width: 50px !important;
+}
+
+table.dataTable td.dt-control:before {
+    content: none !important;
+}
+
+.active {
+    background-color: #166534 !important;
+    color: #ffffff !important;
+    border-radius: 5px !important;
+}
+
+.onhover:hover {
+    background-color: #166534 !important;
+    color: #ffffff !important;
+    border-radius: 5px !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button:active {
+    outline: none;
+    background: #166534 !important;
+    color: #ffffff !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button:hover {
+    outline: none;
+    border: 1px solid #166534 !important;
+    color: #166534 !important;
+    background: #ffffff !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button.current,
+div.dt-container .dt-paging .dt-paging-button.current:hover {
+    background: #166534 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 5px !important;
+}
+
+@media print {
+    html {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    table {
+        width: 100% !important;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+        vertical-align: top;
+        align-items: center !important;
+    }
+
+    .rateQty {
+        width: 80px !important;
+        text-align: center !important;
+    }
+
+    .amount {
+        width: 100px !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    td .print-text {
+        display: inline-flex !important;
+        /* text-align: justify !important; */
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        min-height: 20px !important;
+        min-width: 100px !important;
+        border: none !important;
+    }
+
+    .p-1 {
+        font-size: 12px !important;
+    }
+
+    .tax-header {
+        margin-top: -10px !important;
+    }
+
+    .work-title {
+        font-size: 12px !important;
+        font-weight: bold !important;
+        vertical-align: middle !important;
+        border: 1px solid black !important;
+        border-bottom: none !important;
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 10px !important;
+    }
+
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+
+    .p-6 {
+        padding: 0px !important;
+    }
+
+    .logo {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .contract-first-name {
+        font-size: 3.5rem;
+        font-family: auto;
+        margin: 0px !important;
+        color: #165c13;
+    }
+
+    .contract-last-name {
+        font-size: 2.12rem;
+        font-family: auto;
+        color: #165c13;
+    }
+
+    .contact {
+        margin-top: 0rem !important;
+        color: #165c13 !important;
+        line-height: 15px !important;
+    }
+
+    .contract-details {
+        margin-top: -1rem !important;
+    }
+
+    .address {
+        margin-top: -1rem !important;
+        font-size: 18px !important;
+        color: #165c13 !important;
+        line-height: 1.5rem !important;
+    }
+
+    .contract-owner {
+        font-size: 14px !important;
+        color: #165c13 !important;
+    }
+
+    .contract-owner-name {
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+
+    .contract-id-details {
+        font-size: 12px !important;
+        color: #165c13 !important;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    .divider {
+        border: 1.5px solid #165c13 !important;
+    }
+
+    .no-mt-b {
+        margin-top: 5px !important;
+    }
+
+    .no-mb-b {
+        margin-bottom: 5px !important;
+    }
+
+    .contract-work-details {
+        font-size: 12px !important;
+        font-family: auto !important;
+        padding: 2px !important;
+        font-weight: bold !important;
+        color: #165c13 !important;
+    }
+
+    .invoice-details-container {
+        margin-top: 1rem !important;
+    }
+
+    select {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .signature-div {
+        border: 1px solid #000 !important;
+        width: 100% !important;
+        height: 100px !important;
+        position: relative;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 10px !important;
+    }
+
+    .signature-contractName {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+    .signature-auth {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+    }
+
+    .bill-no {
+        text-align: right !important;
+    }
+
+    .no-show {
+        display: inline !important;
+    }
+
+    @page {
+        size: auto !important;
+    }
+}

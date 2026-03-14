@@ -1,0 +1,78 @@
+To run NDM Application
+
+Step 1: Go to this folder -> E:\N.D.M\Programs\N.D.M_Invoice_App_JS
+
+Step 2: Give cmd in search bar and enter it will open the command prompt
+
+Step 3: run this command "net stop MongoDB"
+
+Step 4: run this command "net start MongoDB" for this command we will get the output like below
+
+        The MongoDB Server (MongoDB) service is starting....
+        The MongoDB Server (MongoDB) service was started successfully.
+
+Step 5: run "cls" command to clear the screen
+
+Step 6: run this command "nodemon" and we will get the output like below
+
+        [nodemon] 2.0.15
+        [nodemon] to restart at any time, enter `rs`
+        [nodemon] watching path(s): *.*
+        [nodemon] watching extensions: ts,json
+        [nodemon] starting `ts-node index.ts`
+        Server Running on Port 8080
+        MongoDB connected
+
+Step 7: Open the Mongodb Compass and connect the localhost
+
+Step 8: Open the browser and run this url  "http://localhost:8080/index.html" you will landed into N.D.M application
+
+Step 9: After finishing the billing work before shutdown run this command mongodump --out  C:\MogoDB_Backup\mongodb-backup-date
+
+
+Above steps is not working try the below steps
+
+Step 01: Go to this folder -> E:\N.D.M\Programs\N.D.M_Invoice_App_JS
+
+Step 02: Give cmd in search bar and enter it will open the command prompt
+
+Step 03: run this command "net stop MongoDB"
+
+Step 04: run this command "sc delete MongoDB"
+
+Step 05: run this command "rmdir C:\MongoDB /s /q"
+
+Step 06: run this command "mkdir C:\MongoDB\data"
+
+Step 07: run this command "mkdir C:\MongoDB\log"
+
+Step 08: run this command "sc delete MongoDB"
+
+Step 09: run this command "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --config "C:\Program Files\MongoDB\Server\8.0\bin\mongod.cfg" --install --serviceName "MongoDB"
+
+Step 10: run this command "net start MongoDB" for this command we will get the output like below
+
+        The MongoDB Server (MongoDB) service is starting....
+        The MongoDB Server (MongoDB) service was started successfully.
+
+Step 11: run this command "mongorestore --drop C:\MogoDB_Backup\mongodb-backup-13-09-2025"
+
+Step 12: run "cls" command to clear the screen
+
+Step 13: run this command "nodemon" and we will get the output like below
+
+        [nodemon] 2.0.15
+        [nodemon] to restart at any time, enter `rs`
+        [nodemon] watching path(s): *.*
+        [nodemon] watching extensions: ts,json
+        [nodemon] starting `ts-node index.ts`
+        Server Running on Port 8080
+        MongoDB connected
+
+Step 14: Open the Mongodb Compass and connect the localhost
+
+Step 15: Open the browser and run this url  "http://localhost:8080/index.html" you will landed into N.D.M application
+
+Step 16: After finishing the bill work before shutdown run this command "mongodump --out  C:\MogoDB_Backup\mongodb-backup-13-09-2025"
+
+Step 17: After finishing the bill work run this command "net stop MongoDB"
