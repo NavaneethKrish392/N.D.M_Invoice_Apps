@@ -1,1 +1,195 @@
 <app-invoice-header></app-invoice-header>
+
+<div class="invoice-details-container">
+    <div class='p-4'>
+        <div class='flex justify-between'>
+            <div class='text-sm'>
+                <p><strong>To</strong></p>
+                <p>M/s. Sun Pharmaceutical Industries Ltd.</p>
+                <p>Sathamai village, Karunguzhi post</p>
+                <p>Madhuranthakam Taluk, Kancheepuram Dist,</p>
+                <p>Tamil Nadu - 603 303</p>
+                <p><strong>GSTIN :</strong> 33AADCS3124K1ZK</p>
+            </div>
+            <div class='text-sm text-right'>
+                <p>
+                    <strong>INVOICE NO:</strong>
+                    <input type='text' class='bill-no no-print' id='bill-no' onblur='billNumChange()'
+                        onkeyup='billNumChange()' autocomplete="off" />
+                    <span id='formattedInvoiceNumber' class='no-show'></span> / <span id='financialYear'></span>
+                </p>
+                <p>
+                    <strong>DATE:</strong>
+                    <input type='date' id='bill-date' class='bill-date no-print' onchange='changeDate()'
+                        autocomplete="off" />
+                    <span id='formattedDate' class='no-show'></span>
+                </p>
+                <p><strong>VENDOR CODE:</strong> 0010013228</p>
+                <p id="billPoNumberParent" class="no-print"><strong>PO NO:</strong> <input type='text'
+                        class='bill-po-no no-print' id='bill-po-no' onblur='poNumChange()' onkeyup='poNumChange()'
+                        autocomplete="off" /><span id='formattedPoNumber' class='no-show'></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Table Section Starts here -->
+
+<div class="invoice-table-container">
+    <form [formGroup]="invoiceForm" autocomplete="off">
+        <!-- Work Title -->
+        <div class="work-title-section">
+            <input type="text" formControlName="workTitle" class="work-title-input" placeholder="Enter Work Title..." />
+        </div>
+
+        <ng-container formArrayName="invoiceRows">
+            <table #table mat-table [dataSource]="dataSource" class="invoice-table">
+                <!-- Sl.No Column -->
+                <ng-container matColumnDef="slNo">
+                    <th mat-header-cell *matHeaderCellDef class="col-slno">Sl.No</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element" class="col-slno">
+                        <span class="text-center">{{ i + 1 }}</span>
+                    </td>
+                </ng-container>
+
+                <!-- Is Header Column -->
+                <ng-container matColumnDef="isHeader">
+                    <th mat-header-cell *matHeaderCellDef class="col-checkbox">Is Header</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element" class="col-checkbox text-center">
+                        <mat-checkbox formControlName="isHeader" (change)="handleCheckbox(i)"></mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <!-- Description Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef>Description</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <input type="text" formControlName="description" class="table-input" />
+                    </td>
+                </ng-container>
+
+                <!-- SAC/HSN Column -->
+                <ng-container matColumnDef="sacHsn">
+                    <th mat-header-cell *matHeaderCellDef>SAC/HSN</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <input type="text" formControlName="sacHsn" class="table-input" />
+                    </td>
+                </ng-container>
+
+                <!-- Unit Column -->
+                <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef>Unit</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <select formControlName="unit" class="table-select">
+                            <option value="Sq.ft">Sq.ft</option>
+                            <option value="Sq.mt">Sq.mt</option>
+                            <option value="No's">No's</option>
+                            <option value="Lft">Lft</option>
+                            <option value="Kg">Kg</option>
+                        </select>
+                    </td>
+                </ng-container>
+
+                <!-- Qty Column -->
+                <ng-container matColumnDef="qty">
+                    <th mat-header-cell *matHeaderCellDef>Qty</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <input type="text" formControlName="qty" class="table-input text-right" 
+                            (change)="calculateAmount(i)" />
+                    </td>
+                </ng-container>
+
+                <!-- Rate Column -->
+                <ng-container matColumnDef="rate">
+                    <th mat-header-cell *matHeaderCellDef>Rate</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <input type="text" formControlName="rate" class="table-input text-right"
+                            (change)="calculateAmount(i)" />
+                    </td>
+                </ng-container>
+
+                <!-- Amount Column -->
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>Amount</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                        <input type="text" formControlName="amount" class="table-input text-right" [readonly]="true" />
+                    </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element" class="text-center">
+                        @if (getActionButtons(i).showAdd) {
+                        <button mat-icon-button matTooltip="Add Row" (click)="addInvoiceRow()" color="primary" type="button">
+                            <mat-icon>add_circle</mat-icon>
+                        </button>
+                        }
+                        @if (getActionButtons(i).showDelete) {
+                        <button mat-icon-button matTooltip="Delete Row" (click)="deleteSVO(invoiceForm,i)" color="warn" type="button">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        }
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9">
+                        No data available
+                    </td>
+                </tr>
+            </table>
+        </ng-container>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+            <div class="summary-row">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">{{ calculateTotal() }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">CGST 9%</span>
+                <span class="summary-value">{{ calculateCGST() }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">SGST 9%</span>
+                <span class="summary-value">{{ calculateSGST() }}</span>
+            </div>
+            <div class="summary-row font-bold">
+                <span class="summary-label">Grand Total</span>
+                <span class="summary-value">{{ calculateGrandTotal() }}</span>
+            </div>
+        </div>
+
+        <!-- Amount in Words Section -->
+        <div class="amount-in-words-section">
+            <label class="font-bold">AMOUNT IN WORDS:</label>
+            <div class="amount-in-words-box">
+                {{ convertToWords(calculateGrandTotal()) }}
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="invoice-footer">
+            <div class="footer-left">
+                <p class="footer-company"><strong>For NDM Aluminium Fabricators</strong></p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-signature">Authorized Signature</p>
+            </div>
+        </div>
+    </form>
+
+    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card>
+</div>
