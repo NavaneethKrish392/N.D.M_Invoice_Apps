@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { InvoiceHeader } from '../invoice-header/invoice-header';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormGroup, FormBuilder, FormControl, FormArray, ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -11,6 +11,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export interface PeriodicElement {
     name: string;
@@ -48,10 +50,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
         MatProgressSpinnerModule,
         MatCheckboxModule,
         MatButtonModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDatepickerModule
     ],
+    providers: [provideNativeDateAdapter()],
     templateUrl: './create-edit-invoice.html',
     styleUrl: './create-edit-invoice.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class CreateEditInvoice {
@@ -64,6 +69,13 @@ export class CreateEditInvoice {
     pageNumber: number = 1;
     isEditableNew: boolean = true;
     invoiceForm!: FormGroup;
+
+    public billNo = signal(0);
+    public billDate = new Date();
+    public vendorCode = signal('0010013228');
+    public billPoNumber = signal(0);
+    events = signal<string[]>([]);
+
     constructor(
         private fb: FormBuilder,
         private _formBuilder: FormBuilder) { }
@@ -100,6 +112,10 @@ export class CreateEditInvoice {
         this.dataSource = new MatTableDataSource(control.controls);
         this.dataSource.data = [...this.dataSource.data];
         this.recalculateSerialNumbers();
+    }
+
+    addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+        this.events.update(events => [...events, `${type}: ${event.value}`]);
     }
 
     // this function will enabled the select field for editd
@@ -278,5 +294,22 @@ export class CreateEditInvoice {
         const rate = parseFloat(row.get('rate')?.value) || 0;
         const amount = qty * rate;
         row.get('amount')?.patchValue(amount.toFixed(2), { emitEvent: false });
+    }
+
+
+    getCurrentFinancialYear() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
+
+        let startYear, endYear;
+        if (month >= 3) {
+            startYear = year;
+            endYear = year + 1;
+        } else {
+            startYear = year - 1;
+            endYear = year;
+        }
+        return `${startYear}-${String(endYear).slice(-2)}`;
     }
 }

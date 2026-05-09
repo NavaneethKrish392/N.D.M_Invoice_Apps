@@ -1,0 +1,474 @@
+// --- Variables for Exact Color Matching ---
+$maroon-highlight: #800000;
+$maroon-base: #a50000;
+
+
+// $lotus-dark: #5a0008;
+// $maroon-highlight: #800000;
+// $maroon-base: #b3001b;
+// $lotus-light: #d61f3a;
+
+// $maroon-base: #3b0101;
+// $maroon-highlight: #8d1c1c;
+
+$green-base: #1B4332;
+$green-highlight: #40916C;
+
+$gold-metallic: linear-gradient(to right,
+        #8e6727 0%,
+        #c5a14d 20%,
+        #fff6b8 50%,
+        #c5a14d 80%,
+        #8e6727 100%);
+$gold-metallic-new: linear-gradient(to right,
+        #8e6727 0%,
+        #c5a14d 20%,
+        #c5a14d 50%,
+        #c5a14d 80%,
+        #8e6727 100%);
+$font-family: "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$text-gradient: linear-gradient(to right, #8e6727 0%, #c5a14d 20%, #c5a14d 20%, #c5a14d 80%, #8e6727 100%);
+
+.business-header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Times New Roman", serif;
+    color: #000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    position: relative;
+    min-height: 120px;
+    font-family: $font-family;
+
+    @media screen and (max-width: 1024px) {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    @media screen and (max-width: 768px) {
+        max-width: 100%;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .contact-side {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        font-size: 0.875rem;
+        line-height: 1;
+        font-weight: 600;
+        color: $maroon-base;
+        flex-shrink: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        @media screen and (max-width: 1024px) {
+            font-size: 0.8rem;
+            top: 12px;
+            right: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 0.75rem;
+            top: 10px;
+            right: 10px;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .logo-side {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        @media screen and (min-width: 300px) and (max-width: 1138px) {
+            gap: 12px;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        // @media screen and (max-width: 768px) {
+        //     gap: 10px;
+        //     justify-content: center;
+        // }
+
+        .logo-placeholder {
+            flex-shrink: 0;
+
+            img {
+                height: 8rem;
+                width: 8rem;
+                object-fit: contain;
+                display: block;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+
+                @media screen and (max-width: 1024px) {
+                    height: 6.5rem;
+                    width: 6.5rem;
+                }
+
+                @media screen and (max-width: 768px) {
+                    height: 5rem;
+                    width: 5rem;
+                }
+            }
+        }
+
+        .name-block {
+            display: flex;
+            flex-direction: row !important;
+            align-items: baseline !important;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-family: "Times New Roman", serif;
+
+            @media screen and (max-width: 1024px) {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+
+            @media screen and (max-width: 768px) {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .initials {
+                margin: 0;
+                padding: 0;
+                font-size: 5rem;
+                line-height: 0.9;
+                font-weight: 900;
+                white-space: wrap;
+                // background: linear-gradient(to bottom,
+                //         $maroon-base 0%,
+                //         $maroon-highlight 48%,
+                //         $maroon-base 52%,
+                //         $maroon-base 100%);
+
+                // background: linear-gradient(to bottom,
+                //         #4a0006 0%,
+                //         #800000 25%,
+                //         #b3001b 50%,
+                //         #d61f3a 70%,
+                //         #7a000d 100%);
+
+                background: linear-gradient(to bottom,
+                        #4a0006 0%,
+                        #800000 25%,
+                        #b3001b 50%,
+                        #d61f3a 70%,
+                        #7a000d 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+
+            }
+
+            .industry {
+                margin: 0;
+                padding: 0;
+                font-size: 3rem;
+                // color: $maroon-base;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: linear-gradient(to bottom,
+                        #4a0006 0%,
+                        #800000 25%,
+                        #b3001b 50%,
+                        #d61f3a 70%,
+                        #7a000d 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+
+                @media screen {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .address-block {
+        text-align: center;
+        font-family: $font-family;
+        font-size: 24px;
+        line-height: 1.5rem;
+        font-weight: 600;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin-top: -2.5rem;
+        color: $maroon-base;
+
+        @media screen and (min-width: 1024px) and (max-width: 1138px) {
+            margin-top: -0.5rem;
+        }
+
+        @media screen and (max-width: 1024px) {
+            font-size: 18px;
+            line-height: 1.3rem;
+            margin-top: -0.5rem
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 1.2rem;
+            margin-top: -0.5rem
+        }
+    }
+
+    .prop-line {
+        font-family: $font-family;
+        font-size: 18px;
+        margin: 8px 0 5px 0;
+        color: $maroon-base;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-weight: 600;
+
+        @media screen and (max-width: 1024px) {
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 13px;
+            margin: 5px 0 3px 0;
+        }
+
+        span {
+            background: $text-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            font-size: 18px;
+        }
+    }
+
+    .tax-line {
+        font-size: 17px;
+        font-weight: 500;
+        text-align: center;
+        margin: 0;
+        // letter-spacing: 1px;
+        color: $maroon-base;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        @media screen and (max-width: 1024px) {
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 11px;
+            font-weight: 500;
+        }
+    }
+
+    .services-footer {
+        position: relative;
+        padding: 10px 0;
+        text-align: center;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        @media screen and (max-width: 1024px) {
+            padding: 8px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 5px 0;
+        }
+
+        // The Gold Bars
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: $gold-metallic-new;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        p {
+            // margin: 8px 0;
+            padding: 0.5rem;
+            font-size: 16px;
+            // font-weight: 500;
+            color: $maroon-base;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+
+            @media screen and (max-width: 1024px) {
+                font-size: 13px;
+                padding: 0.4rem;
+                line-height: 1.3;
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: 11px;
+                padding: 0.3rem;
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+// Print-specific styles
+@media print {
+    .business-header {
+        padding: 15px 0px;
+        min-height: 120px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        overflow: visible !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px !important;
+
+        .contact-side {
+            top: 10px;
+            right: 15px;
+            font-weight: 600;
+            color: $maroon-base;
+            margin-top: 0rem !important;
+            line-height: 15px !important;
+        }
+
+        .logo-side {
+            width: 100%;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+
+            .logo-placeholder {
+                .logo {
+                    width: 5.5rem;
+                    height: 5.5rem;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+
+            .name-block {
+                margin: 18px 0 0 -10px !important;
+
+                .initials {
+                    font-size: 3.5rem;
+
+                    background: linear-gradient(to bottom,
+                            $maroon-base 0%,
+                            $maroon-highlight 48%,
+                            $maroon-base 52%,
+                            $maroon-base 100%);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+
+                .industry {
+                    font-size: 2.12rem;
+                    color: $maroon-base;
+                    font-family: auto;
+                    margin: 0px !important;
+                    // font-weight: 700;
+                    // letter-spacing: 1.5px;
+                    text-transform: uppercase;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+        }
+
+        .address-block {
+            margin-top: -1rem !important;
+            margin-right: -3.5rem !important;
+            font-size: 18px !important;
+            line-height: 1.5rem !important;
+        }
+
+        .prop-line {
+            margin-top: -10px !important;
+            font-size: 14px !important;
+
+            span {
+                font-size: 18px !important;
+                font-weight: bold !important
+            }
+        }
+
+        .tax-line {
+            font-size: 13px !important;
+            text-align: center;
+            font-weight: bold !important;
+        }
+
+        .services-footer {
+            margin-top: -5px !important;
+
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 100%;
+                background: $gold-metallic-new;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            &::after {
+                margin-bottom: 5px !important;
+            }
+
+            p {
+                font-size: 13px !important;
+                font-family: auto !important;
+                padding: 5px !important;
+                font-weight: bold !important;
+                color: $maroon-base;
+                line-height: 1.4;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+
+
+        .prop-line,
+        .tax-line,
+        .services-footer {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+}

@@ -1,3 +1,32 @@
+$font-family: "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+.invoice-details-container {
+    font-family: $font-family !important;
+
+    .invoice-to-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .bill-no {
+            width: 25px !important;
+            text-align: right !important;
+        }
+
+        .ml-10 {
+            margin-left: 10px !important;
+        }
+
+        .ml-15 {
+            margin-left: 15px !important;
+        }
+
+        .bill-date {
+            width: 96px !important;
+        }
+    }
+}
+
 table {
     width: 100%;
 }
@@ -15,7 +44,7 @@ table {
 /* Border */
 .mat-form-field-appearance-outline .mat-form-field-outline {
     color: rgb(255, 255, 255);
-    /* background-color: white; */
+    background-color: white;
 }
 
 /* Font color */
