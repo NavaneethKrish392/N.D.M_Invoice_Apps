@@ -2,6 +2,7 @@ import {
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    inject,
     OnInit,
     ViewChild,
 } from '@angular/core';
@@ -26,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
     selector: 'app-invoice',
@@ -175,7 +177,10 @@ export class Invoice implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) public paginator!: MatPaginator;
     @ViewChild(MatSort) public sort!: MatSort;
 
-    constructor(public invoiceSercice: InvoiceService) {
+    private router = inject(Router);
+    private invoiceSercice = inject(InvoiceService);
+
+    constructor() {
         this.displayedColumnValues = this.columnsToDisplay.map(
             (col) => col.columnValue,
         );
@@ -280,6 +285,7 @@ export class Invoice implements OnInit, AfterViewInit {
     public onClear() {
         this.startDate = null;
         this.endDate = null;
+        this.selectedFY = this.getCurrentFinancialYear();
         const payLoad = {
             InvoiceFinancialYear: this.getCurrentFinancialYear(),
         };
@@ -287,6 +293,6 @@ export class Invoice implements OnInit, AfterViewInit {
     }
 
     createNewInvoice() {
-        throw new Error('Method not implemented.');
+        this.router.navigate(['/create-edit-invoice']);
     }
 }
